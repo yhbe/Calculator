@@ -11,3 +11,16 @@ body {
   height: 100%;
   width: 100%;
 }
+
+
+.calculator{
+  background-color: black;
+  padding: 10px;
+}
+
+.screen{
+}
+
+input{
+  direction: rtl;
+}

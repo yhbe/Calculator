@@ -35,4 +35,4 @@ function operate(str) {
   }
 }
 
-console.log(operate("7/22"));
+console.log(operate("7*22"));

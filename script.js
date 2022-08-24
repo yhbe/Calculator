@@ -1,14 +1,6 @@
 function add(str) {
   let arr = str.split("+");
-  return addnow(arr);
-
-  function addnow(arr) {
-    let sum = 0;
-    for (let number of arr) {
-      sum += +number;
-    }
-    return sum;
-  }
+  return +arr[0] + +arr[1];
 }
 
 function subtract(str) {
@@ -40,4 +32,4 @@ function operate(str) {
   }
 }
 
-console.log(operate("7*22"));
+console.log(operate("7+22"));

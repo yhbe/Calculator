@@ -21,11 +21,12 @@ function subtract(str) {
   }
 }
 
-function multiply(a, b) {
-  return a * b;
+function multiply(str) {
+  let arr = str.split("*");
+  return arr[0] * arr[1];
 }
 
-function divide(a, b) {
+function divide(str) {
   return a / b;
 }
 
@@ -34,7 +35,9 @@ function operate(str) {
     return add(str);
   } else if (str.includes("-")) {
     return subtract(str);
+  } else if (str.includes("*")) {
+    return multiply(str);
   }
 }
 
-console.log(operate("7-22"));
+console.log(operate("7*22"));

@@ -14,17 +14,31 @@ body {
 
 
 .calculator{
-  background-color: black;
+  background-color: rgb(231, 216, 216);
   padding: 10px;
 }
 
-.screen{
-}
 
 input{
   direction: rtl;
+  width: 422px;
+  height: 80px;
+  margin-bottom: 10px;
+  font-size: 100px;
 }
 
-.buttons{
-  
+.button-container{
+  display: flex;
+  width: 430px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.button{
+  background-color: rgb(127, 161, 255);
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

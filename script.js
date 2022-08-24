@@ -11,8 +11,14 @@ function add(str) {
   }
 }
 
-function subtract(a, b) {
-  return a - b;
+function subtract(str) {
+  let arr = str.split("-");
+  return subtractnow(arr);
+
+  function subtractnow(arr) {
+    let sum = arr[0] - arr[1];
+    return sum;
+  }
 }
 
 function multiply(a, b) {
@@ -31,4 +37,4 @@ function operate(str) {
   }
 }
 
-console.log(operate("7+22"));
+console.log(operate("7-22"));

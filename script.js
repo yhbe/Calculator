@@ -19,7 +19,8 @@ function multiply(str) {
 }
 
 function divide(str) {
-  return a / b;
+  let arr = str.split("/");
+  return arr[0] / arr[1];
 }
 
 function operate(str) {
@@ -29,7 +30,9 @@ function operate(str) {
     return subtract(str);
   } else if (str.includes("*")) {
     return multiply(str);
+  } else if (str.includes("/")) {
+    return divide(str);
   }
 }
 
-console.log(operate("7+22"));
+console.log(operate("7/22"));

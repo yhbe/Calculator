@@ -8,11 +8,16 @@ toInput();
 
 //button value to input (calculator screen)
 function getInput() {
-  console.log(this.value);
   let input = document.querySelector("input");
   input.value += this.value;
   let str = [input.value];
-  console.log(str);
+  let toRun = String(str);
+  let regex = /\W\d/;
+  console.log("basic", toRun);
+
+  if (regex.test(toRun)) {
+    console.log(operate(toRun));
+  }
 }
 
 function add(str) {
@@ -31,8 +36,10 @@ function subtract(str) {
 }
 
 function multiply(str) {
+  let input = document.querySelector("input");
   let arr = str.split("*");
-  return arr[0] * arr[1];
+  let value = arr[0] * arr[1];
+  return (input.value = value);
 }
 
 function divide(str) {
@@ -51,5 +58,3 @@ function operate(str) {
     return divide(str);
   }
 }
-
-console.log(operate("7*22"));

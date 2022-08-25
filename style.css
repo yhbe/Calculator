@@ -14,7 +14,7 @@ body {
 
 
 .calculator{
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.904);
   padding: 12px 10px;
   border-radius: 5px;
 }
@@ -37,7 +37,7 @@ input{
 }
 
 .button{
-  background-color: #008000 ;
+  background-color: #079c68;
   width: 100px;
   height: 100px;
   display: flex;
@@ -50,12 +50,12 @@ input{
 
 /* first three buttons of calculator different color styling*/
 .ac, .plusminus, .percent{
-  background-color: #329932
+  background-color: #910cd8;
 }
 
 /* right side of calculator stylings */
 .slash,.asterisk,.minus,.plus,.equal {
-  background-color: RGB(255, 127, 255)
+  background-color: #9c6807;
 }
 
 /* making the "zero" button fill the grid */

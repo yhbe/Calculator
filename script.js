@@ -1,8 +1,16 @@
-function listner() {
-  let button = document.querySelector(".button");
-  button.addEventListener("click", getButton);
+//button on click run getInput()
+function toInput() {
+  let button = document.querySelectorAll(".button");
+  button.forEach((btn) => btn.addEventListener("click", getInput));
+}
 
-  function getButton() {}
+toInput();
+
+//button value to input (calculator screen)
+function getInput() {
+  console.log(this.value);
+  let input = document.querySelector("input");
+  input.value = this.value;
 }
 
 function add(str) {

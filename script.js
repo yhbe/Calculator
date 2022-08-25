@@ -10,7 +10,9 @@ toInput();
 function getInput() {
   console.log(this.value);
   let input = document.querySelector("input");
-  input.value = this.value;
+  input.value += this.value;
+  let str = [input.value];
+  console.log(str);
 }
 
 function add(str) {

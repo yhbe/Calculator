@@ -50,7 +50,7 @@ input{
 
 /* first three buttons of calculator different color styling*/
 .ac, .plusminus, .percent{
-  background-color: #910cd8;
+  background-color: #d8a80c;
 }
 
 /* right side of calculator stylings */

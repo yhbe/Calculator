@@ -15,48 +15,51 @@ body {
 
 .calculator{
   background-color: rgb(0, 0, 0);
-  padding: 12px;
+  padding: 12px 10px;
   border-radius: 5px;
 }
 
 
 input{
   direction: rtl;
-  width: 422px;
+  width: 415px;
   height: 95px;
   margin-bottom: 10px;
-  font-size: 100px;
+  font-size: 90px;
   background-color: rgba(158, 155, 152, 0.822);
 }
 
 .button-container{
   display: flex;
-  width: 430px;
-  gap: 10px;
+  width: 422px;
+  gap: 7px;
   flex-wrap: wrap;
 }
 
 .button{
-  background-color: rgb(60, 173, 173);
+  background-color: #008000 ;
   width: 100px;
   height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
+  font-size: x-large;
+  font-weight: 300
 }
 
 /* first three buttons of calculator different color styling*/
 .ac, .plusminus, .percent{
-  background-color: rgba(60, 173, 173, 0.76);
+  background-color: #329932
 }
 
 /* right side of calculator stylings */
 .slash,.asterisk,.minus,.plus,.equal {
-  background-color: yellow;
+  background-color: RGB(255, 127, 255)
 }
 
 /* making the "zero" button fill the grid */
 .zero{
-  flex: 1;
+  width: 207px;
+  /* flex: 1; */
 }

@@ -1,3 +1,10 @@
+function listner() {
+  let button = document.querySelector(".button");
+  button.addEventListener("click", getButton);
+
+  function getButton() {}
+}
+
 function add(str) {
   let arr = str.split("+");
   return +arr[0] + +arr[1];

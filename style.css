@@ -21,7 +21,11 @@ body {
 
 
 input{
-  direction: rtl;
+
+text-align: right;
+overflow-x: auto;
+overflow-y: hidden;
+white-space: nowrap;
   width: 415px;
   height: 95px;
   margin-bottom: 10px;

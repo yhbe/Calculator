@@ -1,3 +1,6 @@
+let input = document.querySelector("input");
+let button = document.querySelectorAll("button");
+
 //button on click run getInput()
 function toInput() {
   let button = document.querySelectorAll(".button");
@@ -8,15 +11,11 @@ toInput();
 
 //button value to input (calculator screen)
 function getInput() {
-  let input = document.querySelector("input");
   input.value += this.value;
-  let str = [input.value];
-  let toRun = String(str);
-  let regex = /\W\d/;
-  console.log("basic", toRun);
 
-  if (regex.test(toRun)) {
-    console.log(operate(toRun));
+  let regex = /[0-9]+\W[0-9]+\W/;
+  if (regex.test(input.value)) {
+    operate(input.value);
   }
 }
 
@@ -31,15 +30,14 @@ function subtract(str) {
 
   function subtractnow(arr) {
     let sum = arr[0] - arr[1];
-    return sum;
+    return (input.value = sum + operation);
   }
 }
 
 function multiply(str) {
-  let input = document.querySelector("input");
   let arr = str.split("*");
   let value = arr[0] * arr[1];
-  return (input.value = value);
+  return (input.value = value + operation);
 }
 
 function divide(str) {
@@ -57,4 +55,10 @@ function operate(str) {
   } else if (str.includes("/")) {
     return divide(str);
   }
+}
+
+let operation = [];
+function operand(value) {
+  let str = "";
+  return (operation = value);
 }

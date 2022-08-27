@@ -24,7 +24,13 @@ function buttonPressed() {
 //on operation press
 function operationPress(value) {
   let operation = value;
-  previousValue = currentValue;
+  if (previousValue !== "") {
+    currentValue.slice(0, -1);
+    console.log(operate(currentValue.slice(0, -1), previousValue, operation));
+    console.log(previousValue, currentValue, operation);
+  }
+  previousValue = currentValue.slice(0, -1);
+  console.log(previousValue);
   currentValue = "";
   return previousValue, operation, currentValue;
 }

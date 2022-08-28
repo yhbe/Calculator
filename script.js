@@ -1,11 +1,10 @@
 let currentValue = "";
-let previousValue = "";
+let previousValue = null;
 let operation = "";
-let previousOperation = "";
 let input = document.querySelector("input");
 
 // on button press run buttonPressed
-let buttons = document.querySelectorAll("button");
+let buttons = document.querySelectorAll(".key");
 buttons.forEach((button) => button.addEventListener("click", buttonPressed));
 
 //on one of the operations being pressed run operationPress
@@ -17,33 +16,25 @@ operationSigns.forEach((button) =>
 //set calculator input screen to the buttons pressed
 function buttonPressed() {
   currentValue += this.value;
-  input.value += this.value;
-  return currentValue;
+  input.value = currentValue;
 }
 
 //on operation press
 function operationPress(value) {
-  let operation = value;
-  if (previousValue !== "") {
-    currentValue.slice(0, -1);
-    console.log(operate(currentValue.slice(0, -1), previousValue, operation));
-    console.log(previousValue, currentValue, operation);
+  operation = value;
+  input.value = currentValue;
+
+  if (previousValue == null) {
+    previousValue = currentValue;
+    input.value = previousValue;
+    currentValue = "";
+  } else {
+    calculate();
   }
-  previousValue = currentValue.slice(0, -1);
-  console.log(previousValue);
-  currentValue = "";
-  return previousValue, operation, currentValue;
 }
 
-//operate operation on paramaters
-function operate(currentValue, previousValue, operation) {
-  if (operation == "*") {
-    return currentValue * previousValue;
-  } else if (operation == "+") {
-    return currentValue + previousValue;
-  } else if (operation == "-") {
-    return currentValue - previousValue;
-  } else if (operation == "/") {
-    return currentValue / previousValue;
-  }
+function calculate() {
+  previousValue = previousValue * currentValue;
+  input.value = previousValue;
+  currentValue = "";
 }

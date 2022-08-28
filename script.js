@@ -50,6 +50,16 @@ function calculate() {
     previousValue = previousValue * currentValue;
     input.value = previousValue;
     currentValue = "";
+  } else if (previousOperation == "-") {
+    previousOperation = operation;
+    previousValue = previousValue - currentValue;
+    input.value = previousValue;
+    currentValue = "";
+  } else if (previousOperation == "+") {
+    previousOperation = operation;
+    previousValue = Number(previousValue) + Number(currentValue);
+    input.value = previousValue;
+    currentValue = "";
   }
 }
 

@@ -1,6 +1,7 @@
 let currentValue = "";
 let previousValue = null;
 let operation = "";
+let previousOperation = "";
 let input = document.querySelector("input");
 
 // on button press run buttonPressed
@@ -25,6 +26,8 @@ function operationPress(value) {
   input.value = currentValue;
 
   if (previousValue == null) {
+    previousOperation = operation;
+    operation = "";
     previousValue = currentValue;
     input.value = previousValue;
     currentValue = "";
@@ -34,7 +37,24 @@ function operationPress(value) {
 }
 
 function calculate() {
-  previousValue = previousValue * currentValue;
-  input.value = previousValue;
+  if (previousOperation == "/") {
+    if (currentValue == "0") {
+      return error();
+    }
+    previousOperation = operation;
+    previousValue = previousValue / currentValue;
+    input.value = previousValue;
+    currentValue = "";
+  } else if (previousOperation == "*") {
+    previousOperation = operation;
+    previousValue = previousValue * currentValue;
+    input.value = previousValue;
+    currentValue = "";
+  }
+}
+
+function error() {
   currentValue = "";
+  previousValue = null;
+  input.value = "Error";
 }

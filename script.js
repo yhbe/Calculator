@@ -1,7 +1,8 @@
 let currentValue = "";
-let previousValue = null;
+let workingValue = null;
 let operation = "";
-let previousOperation = "";
+let workingOperation = null;
+
 let input = document.querySelector("input");
 
 // on button press run buttonPressed
@@ -20,51 +21,55 @@ function buttonPressed() {
   input.value = currentValue;
 }
 
-//on operation press
 function operationPress(value) {
   operation = value;
-  input.value = currentValue;
 
-  if (previousValue == null) {
-    previousOperation = operation;
+  // on first operationPress, get the number you want to work with && operation ready to be transformed. Next operationPress run calculate()
+  if (workingValue == null) {
+    workingOperation = operation;
     operation = "";
-    previousValue = currentValue;
-    input.value = previousValue;
+    workingValue = currentValue;
+    input.value = workingValue;
     currentValue = "";
   } else {
     calculate();
   }
 }
 
+// workingOperation? /*-+   workingValue /*-+ currentValue
 function calculate() {
-  if (previousOperation == "/") {
+  if (workingOperation == "/") {
     if (currentValue == "0") {
       return error();
     }
-    previousOperation = operation;
-    previousValue = previousValue / currentValue;
-    input.value = previousValue;
+    //resets workingOperation to current operation so you can string together 5*5/6+8-3
+    workingOperation = operation;
+    workingValue = workingValue / currentValue;
+    input.value = workingValue;
+    //resets currentValue so on next operation press the workingValue can be transformed again
     currentValue = "";
-  } else if (previousOperation == "*") {
-    previousOperation = operation;
-    previousValue = previousValue * currentValue;
-    input.value = previousValue;
+  } else if (workingOperation == "*") {
+    workingOperation = operation;
+    workingValue = workingValue * currentValue;
+    input.value = workingValue;
     currentValue = "";
-  } else if (previousOperation == "-") {
-    previousOperation = operation;
-    previousValue = previousValue - currentValue;
-    input.value = previousValue;
+  } else if (workingOperation == "-") {
+    workingOperation = operation;
+    workingValue = workingValue - currentValue;
+    input.value = workingValue;
     currentValue = "";
-  } else if (previousOperation == "+") {
-    previousOperation = operation;
-    previousValue = Number(previousValue) + Number(currentValue);
-    input.value = previousValue;
+  } else if (workingOperation == "+") {
+    workingOperation = operation;
+    workingValue = Number(workingValue) + Number(currentValue);
+    input.value = workingValue;
     currentValue = "";
   }
 }
 
 function error() {
   currentValue = "";
-  previousValue = null;
+  workingValue = null;
+  operation = "";
+  workingOperation = null;
   input.value = "Error";
 }

@@ -123,7 +123,10 @@ function specialSign(value) {
 document.onkeydown = (e) => {
   if (Number(e.key) || e.key == "0") {
     currentValue += e.key;
-    input.value = currentValue;
+    input.value =
+      currentValue.length > 9
+        ? String(currentValue).slice(0, 9) + ".."
+        : currentValue;
   } else if (
     e.key == "*" ||
     e.key == "/" ||

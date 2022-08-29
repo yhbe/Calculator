@@ -15,9 +15,15 @@ operationSigns.forEach((button) =>
   button.addEventListener("click", () => operationPress(button.value))
 );
 
+let specialSigns = document.querySelectorAll(".signs");
+specialSigns.forEach((button) =>
+  button.addEventListener("click", () => specialSign(button.value))
+);
+
 //set calculator input screen to the buttons pressed
 function buttonPressed() {
   currentValue += this.value;
+  specialSign();
   input.value =
     currentValue.length > 9
       ? String(currentValue).slice(0, 9) + ".."
@@ -26,7 +32,6 @@ function buttonPressed() {
 
 function operationPress(value) {
   operation = value;
-
   // on first operationPress, get the number you want to work with && operation ready to be transformed. Next operationPress run calculate()
   if (workingValue == null) {
     workingOperation = operation;
@@ -91,5 +96,22 @@ function error() {
   workingValue = null;
   operation = "";
   workingOperation = null;
-  input.value = "Error";
+  input.value = " ";
+}
+
+// if AC,+/-,% button is pressed
+function specialSign(value) {
+  if (value == "AC") {
+    error();
+    value = "";
+  } else if (value == "+/-") {
+    currentValue = currentValue - currentValue * 2;
+    input.value = currentValue;
+  } else if (value == "%") {
+    currentValue = currentValue / 100;
+    input.value = currentValue;
+  } else if (value == ".") {
+    currentValue = currentValue + ".";
+    input.value = currentValue;
+  }
 }

@@ -121,7 +121,7 @@ function specialSign(value) {
 }
 
 document.onkeydown = (e) => {
-  if (Number(e.key)) {
+  if (Number(e.key) || e.key == "0") {
     currentValue += e.key;
     input.value = currentValue;
   } else if (
@@ -134,5 +134,8 @@ document.onkeydown = (e) => {
     operationPress(e.key);
   } else if (e.key == "%") {
     specialSign(e.key);
+  } else if (e.key == "Backspace") {
+    currentValue = currentValue.slice(0, -1);
+    input.value = currentValue;
   }
 };

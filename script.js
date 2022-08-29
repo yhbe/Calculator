@@ -121,7 +121,6 @@ function specialSign(value) {
 }
 
 document.onkeydown = (e) => {
-  console.log(e);
   if (Number(e.key)) {
     currentValue += e.key;
     input.value = currentValue;

@@ -73,7 +73,7 @@ function calculate() {
     input.value = sliceInput(workingValue);
     currentValue = "";
   } else if (workingOperation == "=" || workingOperation == "Enter") {
-    if (workingOperation == 0 && currentValue == "0") {
+    if (currentValue == "0") {
       workingOperation = "";
     }
     workingOperation = operation;

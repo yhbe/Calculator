@@ -31,6 +31,7 @@ function buttonPressed() {
 }
 
 function operationPress(value) {
+  document.querySelector(".dot").disabled = false;
   operation = value;
   // on first operationPress, get the number you want to work with && operation ready to be transformed. Next operationPress run calculate()
   if (workingValue == null) {
@@ -115,5 +116,24 @@ function specialSign(value) {
   } else if (value == ".") {
     currentValue = currentValue + ".";
     input.value = currentValue;
+    document.querySelector(".dot").disabled = true;
   }
 }
+
+document.onkeydown = (e) => {
+  console.log(e);
+  if (Number(e.key)) {
+    currentValue += e.key;
+    input.value = currentValue;
+  } else if (
+    e.key == "*" ||
+    e.key == "/" ||
+    e.key == "-" ||
+    e.key == "+" ||
+    e.key == "="
+  ) {
+    operationPress(e.key);
+  } else if (e.key == "%") {
+    specialSign(e.key);
+  }
+};

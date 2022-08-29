@@ -18,7 +18,10 @@ operationSigns.forEach((button) =>
 //set calculator input screen to the buttons pressed
 function buttonPressed() {
   currentValue += this.value;
-  input.value = currentValue;
+  input.value =
+    currentValue.length > 9
+      ? String(currentValue).slice(0, 9) + ".."
+      : currentValue;
 }
 
 function operationPress(value) {
@@ -38,6 +41,8 @@ function operationPress(value) {
 
 // workingOperation? /*-+   workingValue /*-+ currentValue
 function calculate() {
+  workingValue = Number(workingValue);
+  currentValue = Number(currentValue);
   if (workingOperation == "/") {
     if (currentValue == "0") {
       return error();
@@ -45,23 +50,38 @@ function calculate() {
     //resets workingOperation to current operation so you can string together 5*5/6+8-3
     workingOperation = operation;
     workingValue = workingValue / currentValue;
-    input.value = workingValue;
+    input.value =
+      String(workingValue).length > 9
+        ? String(workingValue).slice(0, 9) + ".."
+        : String(workingValue);
     //resets currentValue so on next operation press the workingValue can be transformed again
     currentValue = "";
   } else if (workingOperation == "*") {
     workingOperation = operation;
     workingValue = workingValue * currentValue;
-    input.value = workingValue;
+    input.value =
+      String(workingValue).length > 9
+        ? String(workingValue).slice(0, 9) + ".."
+        : String(workingValue);
     currentValue = "";
   } else if (workingOperation == "-") {
     workingOperation = operation;
     workingValue = workingValue - currentValue;
-    input.value = workingValue;
+    input.value =
+      String(workingValue).length > 9
+        ? String(workingValue).slice(0, 9) + ".."
+        : String(workingValue);
     currentValue = "";
   } else if (workingOperation == "+") {
     workingOperation = operation;
-    workingValue = Number(workingValue) + Number(currentValue);
-    input.value = workingValue;
+    workingValue = workingValue + currentValue;
+    input.value =
+      String(workingValue).length > 9
+        ? String(workingValue).slice(0, 9) + ".."
+        : String(workingValue);
+    currentValue = "";
+  } else if (workingOperation == "=") {
+    workingOperation = operation;
     currentValue = "";
   }
 }

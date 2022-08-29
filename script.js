@@ -23,10 +23,7 @@ specialSigns.forEach((button) =>
 //set calculator input screen to the buttons pressed
 function buttonPressed() {
   currentValue += this.value;
-  input.value =
-    currentValue.length > 7
-      ? String(currentValue).slice(0, 7) + ".."
-      : currentValue;
+  input.value = sliceInput(currentValue);
 }
 
 function operationPress(value) {
@@ -37,10 +34,7 @@ function operationPress(value) {
     workingOperation = operation;
     operation = "";
     workingValue = currentValue;
-    input.value =
-      workingValue.length > 7
-        ? String(workingValue).slice(0, 7) + ".."
-        : workingValue;
+    input.value = sliceInput(workingValue);
     currentValue = "";
   } else {
     calculate();
@@ -60,37 +54,25 @@ function calculate() {
     //resets workingOperation to current operation so you can string together 5*5/6+8-3
     workingOperation = operation;
     workingValue = workingValue / currentValue;
-    input.value =
-      String(workingValue).length > 7
-        ? String(workingValue).slice(0, 7) + ".."
-        : String(workingValue);
+    input.value = sliceInput(workingValue);
     //resets currentValue so on next operation press the workingValue can be transformed again
     currentValue = "";
   } else if (workingOperation == "*") {
     workingOperation = operation;
     workingValue = workingValue * currentValue;
-    input.value =
-      String(workingValue).length > 7
-        ? String(workingValue).slice(0, 7) + ".."
-        : String(workingValue);
+    input.value = sliceInput(workingValue);
     currentValue = "";
   } else if (workingOperation == "-") {
     workingOperation = operation;
     workingValue = workingValue - currentValue;
-    input.value =
-      String(workingValue).length > 7
-        ? String(workingValue).slice(0, 7) + ".."
-        : String(workingValue);
+    input.value = sliceInput(workingValue);
     currentValue = "";
   } else if (workingOperation == "+") {
     workingOperation = operation;
     workingValue = workingValue + currentValue;
-    input.value =
-      String(workingValue).length > 7
-        ? String(workingValue).slice(0, 7) + ".."
-        : String(workingValue);
+    input.value = sliceInput(workingValue);
     currentValue = "";
-  } else if (workingOperation == "=") {
+  } else if (workingOperation == "=" || workingOperation == "Enter") {
     if (workingOperation == 0 && currentValue == "0") {
       workingOperation = "";
     }
@@ -138,7 +120,8 @@ document.onkeydown = (e) => {
     e.key == "/" ||
     e.key == "-" ||
     e.key == "+" ||
-    e.key == "="
+    e.key == "=" ||
+    e.key == "Enter"
   ) {
     operationPress(e.key);
   } else if (e.key == "%") {
@@ -155,3 +138,9 @@ document.onkeydown = (e) => {
     error();
   }
 };
+
+function sliceInput(value) {
+  return String(value).length > 7
+    ? String(value).slice(0, 7) + ".."
+    : String(value);
+}

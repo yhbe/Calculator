@@ -52,11 +52,11 @@ function calculate() {
   workingValue = Number(workingValue);
   currentValue = Number(currentValue);
 
-  if (currentValue == 0) {
-    return error();
-  }
-
   if (workingOperation == "/") {
+    //if dividing by zero reset
+    if (currentValue == 0) {
+      return error();
+    }
     //resets workingOperation to current operation so you can string together 5*5/6+8-3
     workingOperation = operation;
     workingValue = workingValue / currentValue;
@@ -91,6 +91,9 @@ function calculate() {
         : String(workingValue);
     currentValue = "";
   } else if (workingOperation == "=") {
+    if (workingOperation == 0 && currentValue == "0") {
+      workingOperation = "";
+    }
     workingOperation = operation;
     currentValue = "";
   }

@@ -24,8 +24,8 @@ specialSigns.forEach((button) =>
 function buttonPressed() {
   currentValue += this.value;
   input.value =
-    currentValue.length > 9
-      ? String(currentValue).slice(0, 9) + ".."
+    currentValue.length > 7
+      ? String(currentValue).slice(0, 7) + ".."
       : currentValue;
 }
 
@@ -37,7 +37,10 @@ function operationPress(value) {
     workingOperation = operation;
     operation = "";
     workingValue = currentValue;
-    input.value = workingValue;
+    input.value =
+      workingValue.length > 7
+        ? String(workingValue).slice(0, 7) + ".."
+        : workingValue;
     currentValue = "";
   } else {
     calculate();
@@ -58,8 +61,8 @@ function calculate() {
     workingOperation = operation;
     workingValue = workingValue / currentValue;
     input.value =
-      String(workingValue).length > 9
-        ? String(workingValue).slice(0, 9) + ".."
+      String(workingValue).length > 7
+        ? String(workingValue).slice(0, 7) + ".."
         : String(workingValue);
     //resets currentValue so on next operation press the workingValue can be transformed again
     currentValue = "";
@@ -67,24 +70,24 @@ function calculate() {
     workingOperation = operation;
     workingValue = workingValue * currentValue;
     input.value =
-      String(workingValue).length > 9
-        ? String(workingValue).slice(0, 9) + ".."
+      String(workingValue).length > 7
+        ? String(workingValue).slice(0, 7) + ".."
         : String(workingValue);
     currentValue = "";
   } else if (workingOperation == "-") {
     workingOperation = operation;
     workingValue = workingValue - currentValue;
     input.value =
-      String(workingValue).length > 9
-        ? String(workingValue).slice(0, 9) + ".."
+      String(workingValue).length > 7
+        ? String(workingValue).slice(0, 7) + ".."
         : String(workingValue);
     currentValue = "";
   } else if (workingOperation == "+") {
     workingOperation = operation;
     workingValue = workingValue + currentValue;
     input.value =
-      String(workingValue).length > 9
-        ? String(workingValue).slice(0, 9) + ".."
+      String(workingValue).length > 7
+        ? String(workingValue).slice(0, 7) + ".."
         : String(workingValue);
     currentValue = "";
   } else if (workingOperation == "=") {
@@ -124,8 +127,8 @@ document.onkeydown = (e) => {
   if (Number(e.key) || e.key == "0") {
     currentValue += e.key;
     input.value =
-      currentValue.length > 9
-        ? String(currentValue).slice(0, 9) + ".."
+      currentValue.length > 7
+        ? String(currentValue).slice(0, 7) + ".."
         : currentValue;
   } else if (
     e.key == "*" ||

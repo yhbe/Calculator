@@ -98,8 +98,9 @@ function error() {
   workingValue = null;
   operation = "";
   workingOperation = null;
-  input.value = " ";
+  input.value = "0";
 }
+error();
 
 // if AC,+/-,% button is pressed
 function specialSign(value) {
@@ -141,6 +142,9 @@ document.onkeydown = (e) => {
   } else if (e.key == "Backspace") {
     currentValue = currentValue.slice(0, -1);
     input.value = currentValue;
+    if (currentValue.length == "0") {
+      error();
+    }
   } else if (e.key == "Escape") {
     error();
   }

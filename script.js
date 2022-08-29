@@ -23,7 +23,6 @@ specialSigns.forEach((button) =>
 //set calculator input screen to the buttons pressed
 function buttonPressed() {
   currentValue += this.value;
-  specialSign();
   input.value =
     currentValue.length > 9
       ? String(currentValue).slice(0, 9) + ".."
@@ -107,7 +106,7 @@ function specialSign(value) {
   if (value == "AC") {
     error();
     value = "";
-  } else if (value == "+/-") {
+  } else if (value == "+/-" || value == "^") {
     currentValue = currentValue - currentValue * 2;
     input.value = currentValue;
   } else if (value == "%") {
@@ -137,8 +136,12 @@ document.onkeydown = (e) => {
     operationPress(e.key);
   } else if (e.key == "%") {
     specialSign(e.key);
+  } else if (e.key == "^") {
+    specialSign(e.key);
   } else if (e.key == "Backspace") {
     currentValue = currentValue.slice(0, -1);
     input.value = currentValue;
+  } else if (e.key == "Escape") {
+    error();
   }
 };
